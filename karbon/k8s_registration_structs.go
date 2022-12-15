@@ -50,6 +50,8 @@ type K8sClusterRegistration struct {
 	UUID string `json:"uuid,omitempty"`
 }
 
+type K8sClusterRegistrationList []*K8sClusterRegistration
+
 type K8sCreateClusterRegistrationRequest struct {
 
 	// Categories for this k8s cluster. This allows setting up multiple values from a single key.

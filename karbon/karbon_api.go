@@ -71,6 +71,20 @@ func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
 	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
 }
 
+func (op Client) GetK8sRegistrationList() (*K8sClusterRegistrationList, error) {
+	ctx := context.TODO()
+
+	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
+	karbonClusterActionResponse := new(K8sClusterRegistrationList)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+}
+
 // NewKarbonAPIClient return a internal to operate Karbon resources
 func NewKarbonAPIClient(credentials prismgoclient.Credentials) (*Client, error) {
 	if credentials.URL == "" || credentials.Username == "" || credentials.Password == "" {
