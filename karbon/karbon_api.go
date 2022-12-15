@@ -65,7 +65,7 @@ func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
 	karbonClusterActionResponse := new(K8sClusterRegistration)
 
 	if err != nil {
-		return nil, errGet
+		return nil, err
 	}
 
 	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
