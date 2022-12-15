@@ -28,6 +28,28 @@ type K8sClusterRegistrationDeleteResponse struct {
 	TaskUUID *string `json:"task_uuid"`
 }
 
+type K8sClusterRegistration struct {
+
+	// Categories for this k8s cluster. This allows setting up multiple values from a single key.
+	CategoriesMapping map[string]string `json:"categories_mapping,omitempty"`
+
+	// identity
+	Identity *K8sIdentity `json:"identity,omitempty"`
+
+	// K8s cluster name.
+	// Required: true
+	// Max Length: 40
+	// Min Length: 1
+	Name *string `json:"name"`
+
+	// K8s cluster status.
+	Status string `json:"status,omitempty"`
+
+	// The universally unique identifier (UUID) of the k8s cluster.
+	// Pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+	UUID string `json:"uuid,omitempty"`
+}
+
 type K8sCreateClusterRegistrationRequest struct {
 
 	// Categories for this k8s cluster. This allows setting up multiple values from a single key.

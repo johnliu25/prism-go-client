@@ -46,12 +46,26 @@ func (op Client) CreateK8sRegistration(createRequest *K8sCreateClusterRegistrati
 func (op Client) DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse, error) {
 	ctx := context.TODO()
 
-	path := "v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d5"
-	req, err := op.httpClient.NewRequest(http.MethodPost, path, nil)
+	path := "v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+	req, err := op.httpClient.NewRequest(http.MethodDelete, path, nil)
 	karbonClusterActionResponse := new(K8sClusterRegistrationDeleteResponse)
 
 	if err != nil {
 		return nil, err
+	}
+
+	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+}
+
+func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
+	ctx := context.TODO()
+
+	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
+	karbonClusterActionResponse := new(K8sClusterRegistration)
+
+	if err != nil {
+		return nil, errGet
 	}
 
 	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
