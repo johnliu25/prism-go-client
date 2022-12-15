@@ -27,6 +27,8 @@ type Client struct {
 type ClientService interface {
 	CreateK8sRegistration(createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error)
 	DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse, error)
+	GetK8sRegistration() (*K8sClusterRegistration, error)
+	GetK8sRegistrationList() (*K8sClusterRegistrationList, error)
 }
 
 func (op Client) CreateK8sRegistration(createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error) {
