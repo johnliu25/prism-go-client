@@ -25,15 +25,13 @@ type Client struct {
 }
 
 type ClientService interface {
-	CreateK8sRegistration(createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error)
-	DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse, error)
-	GetK8sRegistration() (*K8sClusterRegistration, error)
-	GetK8sRegistrationList() (*K8sClusterRegistrationList, error)
+	CreateK8sRegistration(ctx context.Context, createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error)
+	DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegistrationDeleteResponse, error)
+	GetK8sRegistration(ctx context.Context) (*K8sClusterRegistration, error)
+	GetK8sRegistrationList(ctx context.Context) (*K8sClusterRegistrationList, error)
 }
 
-func (op Client) CreateK8sRegistration(createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error) {
-	ctx := context.TODO()
-
+func (op Client) CreateK8sRegistration(ctx context.Context, createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/"
 	req, err := op.httpClient.NewRequest(http.MethodPost, path, createRequest)
 	if err != nil {
@@ -46,9 +44,7 @@ func (op Client) CreateK8sRegistration(createRequest *K8sCreateClusterRegistrati
 	return karbonClusterActionResponse, nil
 }
 
-func (op Client) DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse, error) {
-	ctx := context.TODO()
-
+func (op Client) DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegistrationDeleteResponse, error) {
 	path := "v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
 	req, err := op.httpClient.NewRequest(http.MethodDelete, path, nil)
 	if err != nil {
@@ -61,8 +57,7 @@ func (op Client) DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse,
 	return karbonClusterActionResponse, nil
 }
 
-func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
-	ctx := context.TODO()
+func (op Client) GetK8sRegistration(ctx context.Context) (*K8sClusterRegistration, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
 	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
@@ -75,8 +70,7 @@ func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
 	return karbonClusterActionResponse, nil
 }
 
-func (op Client) GetK8sRegistrationList() (*K8sClusterRegistrationList, error) {
-	ctx := context.TODO()
+func (op Client) GetK8sRegistrationList(ctx context.Context) (*K8sClusterRegistrationList, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
 	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
