@@ -40,7 +40,10 @@ func (op Client) CreateK8sRegistration(createRequest *K8sCreateClusterRegistrati
 		return nil, err
 	}
 	karbonClusterActionResponse := new(K8sCreateClusterRegistrationResponse)
-	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+		return nil, err
+	}
+	return karbonClusterActionResponse, nil
 }
 
 func (op Client) DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse, error) {
@@ -52,7 +55,10 @@ func (op Client) DeleteK8sRegistration() (*K8sClusterRegistrationDeleteResponse,
 		return nil, err
 	}
 	karbonClusterActionResponse := new(K8sClusterRegistrationDeleteResponse)
-	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+		return nil, err
+	}
+	return karbonClusterActionResponse, nil
 }
 
 func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
@@ -63,7 +69,10 @@ func (op Client) GetK8sRegistration() (*K8sClusterRegistration, error) {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(K8sClusterRegistration)
-	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+		return nil, err
+	}
+	return karbonClusterActionResponse, nil
 }
 
 func (op Client) GetK8sRegistrationList() (*K8sClusterRegistrationList, error) {
@@ -74,7 +83,10 @@ func (op Client) GetK8sRegistrationList() (*K8sClusterRegistrationList, error) {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(K8sClusterRegistrationList)
-	return karbonClusterActionResponse, op.httpClient.Do(ctx, req, karbonClusterActionResponse)
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+		return nil, err
+	}
+	return karbonClusterActionResponse, nil
 }
 
 // NewKarbonAPIClient return a internal to operate Karbon resources
