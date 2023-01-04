@@ -45,7 +45,7 @@ func (op Client) CreateK8sRegistration(ctx context.Context, createRequest *K8sCr
 }
 
 func (op Client) DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegistrationDeleteResponse, error) {
-	path := "v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
 	req, err := op.httpClient.NewRequest(http.MethodDelete, path, nil)
 	if err != nil {
 		return nil, err
