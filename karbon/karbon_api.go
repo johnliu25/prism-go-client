@@ -24,7 +24,7 @@ type Client struct {
 	Meta            MetaService
 }
 
-type ClientService interface {
+type K8sRegistrationService interface {
 	CreateK8sRegistration(ctx context.Context, createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error)
 	DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegistrationDeleteResponse, error)
 	GetK8sRegistration(ctx context.Context) (*K8sClusterRegistration, error)
