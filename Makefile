@@ -26,7 +26,7 @@ $(API_V1_DEPS):
 		swagger validate $(API_V1_DEPS)
 		swagger generate server --target $(API_V1_DIR) --spec $(API_V1_DEPS) --exclude-main
 		swagger generate client --target $(API_V1_DIR) --spec $(API_V1_DEPS)
-echo "Swagger generation complete"
+		echo "Swagger generation complete"
 
 # go-get-tool will 'go get' any package $2 and install it to $1.
 # originally copied from kubebuilder
