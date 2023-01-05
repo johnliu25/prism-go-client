@@ -16,7 +16,7 @@ const (
 
 // Client manages the V3 API
 type Client struct {
-	httpClient      *internal.Client
+	HttpClient      *internal.Client
 	Cluster         ClusterService
 	PrivateRegistry PrivateRegistryService
 	Meta            MetaService
