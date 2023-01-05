@@ -18,7 +18,7 @@ type K8sRegistrationService interface {
 	GetK8sRegistrationList(ctx context.Context) (*K8sClusterRegistrationList, error)
 }
 
-func (op V1Aplha1) CreateK8sRegistration(ctx context.Context, createRequest *K8sCreateClusterRegistrationRequest) (*karbon.K8sCreateClusterRegistrationResponse, error) {
+func (op V1Aplha1) CreateK8sRegistration(ctx context.Context, createRequest *K8sCreateClusterRegistrationRequest) (*K8sCreateClusterRegistrationResponse, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/"
 	req, err := op.httpClient.NewRequest(http.MethodPost, path, createRequest)
 	if err != nil {
