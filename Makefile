@@ -22,9 +22,9 @@ build: vendor ## Build your project and put the output binary in bin/
 APITOPLEVEL = api
 API_V1_YAML = $(APITOPLEVEL)/modules/v1/*.yaml
 API_V1_DIR = $(APITOPLEVEL)/v1
-	swagger validate $(API_V1_YAML)
-	swagger generate server --target $(API_V1_DIR) --spec $(API_V1_YAML) --exclude-main
-	swagger generate client --target $(API_V1_DIR) --spec $(API_V1_YAML)
+#	swagger validate $(API_V1_YAML)
+#	swagger generate server --target $(API_V1_DIR) --spec $(API_V1_YAML) --exclude-main
+#	swagger generate client --target $(API_V1_DIR) --spec $(API_V1_YAML)
 
 # go-get-tool will 'go get' any package $2 and install it to $1.
 # originally copied from kubebuilder
