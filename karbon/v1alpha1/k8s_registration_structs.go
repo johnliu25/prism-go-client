@@ -1,4 +1,4 @@
-package karbon
+package v1alpha1
 
 type K8sCreateClusterRegistrationResponse struct {
 
