@@ -97,7 +97,7 @@ func NewKarbonAPIClient(credentials prismgoclient.Credentials) (*Client, error) 
 	}
 
 	f := &Client{
-		httpClient: c,
+		HttpClient: c,
 		Cluster: ClusterOperations{
 			httpClient: c,
 		},
