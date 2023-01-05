@@ -6,6 +6,7 @@ import (
 
 	prismgoclient "github.com/nutanix-cloud-native/prism-go-client"
 	"github.com/nutanix-cloud-native/prism-go-client/internal"
+	"github.com/nutanix-cloud-native/prism-go-client/karbon/v1alpha1"
 )
 
 const (
@@ -16,10 +17,11 @@ const (
 
 // Client manages the V3 API
 type Client struct {
-	HttpClient      *internal.Client
+	httpClient      *internal.Client
 	Cluster         ClusterService
 	PrivateRegistry PrivateRegistryService
 	Meta            MetaService
+	V1Aplha1        v1alpha1.V1Aplha1
 }
 
 /*type K8sRegistrationService interface {

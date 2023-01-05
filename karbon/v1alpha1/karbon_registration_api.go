@@ -4,8 +4,13 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/nutanix-cloud-native/prism-go-client/internal"
 	"github.com/nutanix-cloud-native/prism-go-client/karbon"
 )
+
+type V1Aplha1 struct {
+	httpClient *internal.Client
+}
 
 type K8sRegistrationService interface {
 	CreateK8sRegistration(ctx context.Context, createRequest *karbon.K8sCreateClusterRegistrationRequest) (*karbon.K8sCreateClusterRegistrationResponse, error)
@@ -14,53 +19,53 @@ type K8sRegistrationService interface {
 	GetK8sRegistrationList(ctx context.Context) (*karbon.K8sClusterRegistrationList, error)
 }
 
-func (op karbon.Client) CreateK8sRegistration(ctx context.Context, createRequest *karbon.K8sCreateClusterRegistrationRequest) (*karbon.K8sCreateClusterRegistrationResponse, error) {
+func (op V1Aplha1) CreateK8sRegistration(ctx context.Context, createRequest *karbon.K8sCreateClusterRegistrationRequest) (*karbon.K8sCreateClusterRegistrationResponse, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/"
-	req, err := op.HttpClient.NewRequest(http.MethodPost, path, createRequest)
+	req, err := op.httpClient.NewRequest(http.MethodPost, path, createRequest)
 	if err != nil {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(karbon.K8sCreateClusterRegistrationResponse)
-	if err := op.HttpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
 		return nil, err
 	}
 	return karbonClusterActionResponse, nil
 }
 
-func (op karbon.Client) DeleteK8sRegistration(ctx context.Context) (*karbon.K8sClusterRegistrationDeleteResponse, error) {
+func (op V1Aplha1) DeleteK8sRegistration(ctx context.Context) (*karbon.K8sClusterRegistrationDeleteResponse, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
-	req, err := op.HttpClient.NewRequest(http.MethodDelete, path, nil)
+	req, err := op.httpClient.NewRequest(http.MethodDelete, path, nil)
 	if err != nil {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(karbon.K8sClusterRegistrationDeleteResponse)
-	if err := op.HttpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
 		return nil, err
 	}
 	return karbonClusterActionResponse, nil
 }
 
-func (op karbon.Client) GetK8sRegistration(ctx context.Context) (*karbon.K8sClusterRegistration, error) {
+func (op V1Aplha1) GetK8sRegistration(ctx context.Context) (*karbon.K8sClusterRegistration, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
-	req, err := op.HttpClient.NewRequest(http.MethodGet, path, nil)
+	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(karbon.K8sClusterRegistration)
-	if err := op.HttpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
 		return nil, err
 	}
 	return karbonClusterActionResponse, nil
 }
 
-func (op karbon.Client) GetK8sRegistrationList(ctx context.Context) (*karbon.K8sClusterRegistrationList, error) {
+func (op V1Aplha1) GetK8sRegistrationList(ctx context.Context) (*karbon.K8sClusterRegistrationList, error) {
 	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
-	req, err := op.HttpClient.NewRequest(http.MethodGet, path, nil)
+	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, err
 	}
 	karbonClusterActionResponse := new(karbon.K8sClusterRegistrationList)
-	if err := op.HttpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
+	if err := op.httpClient.Do(ctx, req, karbonClusterActionResponse); err != nil {
 		return nil, err
 	}
 	return karbonClusterActionResponse, nil
