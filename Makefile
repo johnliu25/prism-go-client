@@ -20,10 +20,9 @@ build: vendor ## Build your project and put the output binary in bin/
 	mkdir -p bin
 	GO111MODULE=on $(GOCMD) build -mod vendor -o bin/$(BINARY_NAME) .
 APITOPLEVEL = api
-API_V1_YAML = $(APITOPLEVEL)/modules/v1/*.yaml
+API_V1_YAML = $(APITOPLEVEL)/modules/v1/cluster_registration_defs.yaml
 API_V1_DIR = $(APITOPLEVEL)/v1
-echo "print"
-#	swagger validate $(API_V1_YAML)
+		swagger validate $(API_V1_YAML)
 #	swagger generate server --target $(API_V1_DIR) --spec $(API_V1_YAML) --exclude-main
 #	swagger generate client --target $(API_V1_DIR) --spec $(API_V1_YAML)
 
