@@ -31,8 +31,8 @@ func (op V1Aplha1) CreateK8sRegistration(ctx context.Context, createRequest *K8s
 	return karbonClusterActionResponse, nil
 }
 
-func (op V1Aplha1) DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegistrationDeleteResponse, error) {
-	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+func (op V1Aplha1) DeleteK8sRegistration(ctx context.Context, UUID string) (*K8sClusterRegistrationDeleteResponse, error) {
+	path := "/v1-alpha.1/k8s/cluster-registrations/" + UUID
 	req, err := op.httpClient.NewRequest(http.MethodDelete, path, nil)
 	if err != nil {
 		return nil, err
@@ -44,8 +44,8 @@ func (op V1Aplha1) DeleteK8sRegistration(ctx context.Context) (*K8sClusterRegist
 	return karbonClusterActionResponse, nil
 }
 
-func (op V1Aplha1) GetK8sRegistration(ctx context.Context) (*K8sClusterRegistration, error) {
-	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+func (op V1Aplha1) GetK8sRegistration(ctx context.Context, UUID string) (*K8sClusterRegistration, error) {
+	path := "/v1-alpha.1/k8s/cluster-registrations/" + UUID
 	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func (op V1Aplha1) GetK8sRegistration(ctx context.Context) (*K8sClusterRegistrat
 }
 
 func (op V1Aplha1) GetK8sRegistrationList(ctx context.Context) (*K8sClusterRegistrationList, error) {
-	path := "/v1-alpha.1/k8s/cluster-registrations/eae7fe7e-34e8-4978-bb9a-e49157e858d6"
+	path := "/v1-alpha.1/k8s/cluster-registrations/"
 	req, err := op.httpClient.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, err
