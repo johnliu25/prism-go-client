@@ -19,13 +19,6 @@ all: help
 build: vendor ## Build your project and put the output binary in bin/
 	mkdir -p bin
 	GO111MODULE=on $(GOCMD) build -mod vendor -o bin/$(BINARY_NAME) .
-APITOPLEVEL = api
-API_V1_DIR = $(APITOPLEVEL)/v1
-API_V1_DEPS = $(API_V1_DIR)/base.yaml $(APITOPLEVEL)/modules/v1/cluster_registration_defs.yaml
-		swagger validate $(API_V1_DEPS)
-		swagger generate server --target $(API_V1_DIR) --spec $(API_V1_DEPS) --exclude-main
-		swagger generate client --target $(API_V1_DIR) --spec $(API_V1_DEPS)
-		echo "Swagger generation complete"
 
 # go-get-tool will 'go get' any package $2 and install it to $1.
 # originally copied from kubebuilder
