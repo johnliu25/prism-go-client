@@ -21,7 +21,7 @@ type Client struct {
 	Cluster         ClusterService
 	PrivateRegistry PrivateRegistryService
 	Meta            MetaService
-	V1Aplha1        v1alpha1.V1Aplha1
+	V1Aplha1        v1alpha1.V1Alpha1
 }
 
 // NewKarbonAPIClient return a internal to operate Karbon resources
