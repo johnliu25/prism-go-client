@@ -7,6 +7,8 @@ import (
 	"github.com/nutanix-cloud-native/prism-go-client/internal"
 )
 
+var _ K8sRegistrationService = &V1Alpha1{}
+
 type V1Alpha1 struct {
 	httpClient *internal.Client
 }
